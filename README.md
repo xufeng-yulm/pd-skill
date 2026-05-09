@@ -1,6 +1,7 @@
 <div align="center">
 
-![pd-skill logo](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/logo.svg)
+![pd-skill logo](assets/logo.svg)
+
 
 # pd-skill
 
