@@ -1,0 +1,30 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="480" rx="40" fill="#0B1020"/>
+  <rect x="24" y="24" width="1152" height="432" rx="28" fill="url(#paint0_linear)"/>
+  <g opacity="0.18">
+    <circle cx="1036" cy="120" r="162" fill="#60A5FA"/>
+    <circle cx="924" cy="336" r="196" fill="#1D4ED8"/>
+  </g>
+  <rect x="72" y="80" width="126" height="126" rx="32" fill="#F8FAFC"/>
+  <path d="M104 108H136C153.673 108 168 122.327 168 140C168 157.673 153.673 172 136 172H104V108Z" fill="#2563EB"/>
+  <path d="M180 108H144V172H162V148H180C191.046 148 200 139.046 200 128C200 116.954 191.046 108 180 108Z" fill="#0F172A"/>
+  <path d="M162 124V136H178C182.418 136 186 132.418 186 128C186 123.582 182.418 120 178 120H162V124Z" fill="#F8FAFC"/>
+  <text x="72" y="270" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">pd-skill</text>
+  <text x="72" y="326" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">Product documentation system for AI-native PRDs, Feishu publishing,</text>
+  <text x="72" y="364" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="500">visual artifacts, prototype briefs, and launch-ready planning.</text>
+  <g>
+    <rect x="72" y="398" width="148" height="38" rx="19" fill="#1E293B"/>
+    <text x="98" y="423" fill="#93C5FD" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Jobs Lens</text>
+    <rect x="236" y="398" width="172" height="38" rx="19" fill="#1E293B"/>
+    <text x="262" y="423" fill="#A7F3D0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Feishu-native PRD</text>
+    <rect x="424" y="398" width="176" height="38" rx="19" fill="#1E293B"/>
+    <text x="450" y="423" fill="#FCD34D" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">18-doc delivery</text>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear" x1="96" y1="40" x2="1126" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="0.5" stop-color="#172554"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+</svg>

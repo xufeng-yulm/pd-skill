@@ -1,98 +1,80 @@
+<div align="center">
+
+<img src="assets/logo.svg" alt="pd-skill logo" width="96" height="96" />
+
 # pd-skill
 
-端到端产品经理编排技能。
+<p><strong>面向 AI 工作流的产品文档系统，用于生成视觉化 PRD、飞书知识库发布、原型 brief 与上线级规划产物。</strong></p>
 
-目标不是只写一篇 PRD，而是把一句需求推进成一套可交付的产品产物，包括需求分析、多文档 PRD、流程图/架构图、原型 brief、按需飞书发布、Deck 结构和运营素材 brief。
+<p>
+  <img src="https://img.shields.io/badge/PRD-18%20Docs-2563EB?style=flat-square" alt="18 doc PRD" />
+  <img src="https://img.shields.io/badge/Publishing-Feishu%20Wiki-0F766E?style=flat-square" alt="Feishu Wiki" />
+  <img src="https://img.shields.io/badge/Visuals-Mermaid%20Native-7C3AED?style=flat-square" alt="Mermaid Native" />
+  <img src="https://img.shields.io/badge/Lens-Jobs%20Product%20Review-F59E0B?style=flat-square" alt="Jobs Lens" />
+</p>
 
-## 当前能力
+<p>
+  <a href="./README_EN.md">English</a> · 中文
+</p>
 
-- 需求头脑风暴
-- Jobs 风格产品判断收敛
-- 多文档 PRD 生成
-- Mermaid 流程图、体验图、架构图
-- 飞书多文档发布
-- 原型 brief 与前端原型交接
-- Deck 大纲与 JSON 结构
-- 运营素材 brief
+<p>
+  <a href="#概览">概览</a> ·
+  <a href="#产出内容">产出内容</a> ·
+  <a href="#工作流">工作流</a> ·
+  <a href="#快速开始">快速开始</a> ·
+  <a href="#飞书发布">飞书发布</a>
+</p>
 
-## 关键更新
+<img src="assets/banner.svg" alt="pd-skill banner" width="100%" />
 
-### 1. 头脑风暴后，强制进入 Jobs 收敛
+</div>
 
-在 `analysis/01-brainstorm.md` 之后，默认继续生成：
+---
 
-- `analysis/02-jobs-product-lens.md`
+## 概览
 
-这一层用于收敛：
+`pd-skill` 不是一个只会吐出单篇 PRD 的提示词，而是一套完整的产品交付系统。它会把一句产品需求推进为一组结构化产物，包括：
 
-- 一句话产品定义
-- Focus / Say No
-- 这版最该砍掉什么
-- end-to-end 体验原则
-- 用户会记住的关键瞬间
-- 对 PRD 的写作指令
+- 需求分析
+- Jobs 风格产品判断
+- 多文档 PRD
+- 可编辑的视觉图表
+- 原型 brief 与原型交接
+- 飞书知识库发布
+- deck 大纲与运营 brief
 
-默认优先对齐 `alchaincyf/nuwa-skill` 的 Steve Jobs 视角方法，并复用当前环境里的 `steve-jobs-perspective` 技能。
+默认输出面向真实评审场景，而不是单纯把信息塞进 Markdown。文档结构会尽量让产品、设计、研发、运营、管理层都能在同一套产物里读到自己关心的部分，而不需要二次翻译。
 
-### 2. PRD 默认是视觉化文档，不是纯文字长文
+## 为什么做这个
 
-PRD 不再只追求“完整”，还要求“适合评审会快速扫描”。
+大多数 AI 生成的 PRD 都有同一类问题：
 
-默认会优先产出这些结构化视觉元素：
+- 太短
+- 太泛
+- 把战略、体验、执行混成一篇
+- 看上去完整，但并不适合评审
+- 发布到飞书后，图表变成静态内容，后续很难继续编辑
 
-- 封面型总览图
-- 体验旅程图
-- 产品循环图
-- 信息架构图
-- 指标漏斗图
-- 方案结构图
-- 技术架构图
+`pd-skill` 用下面的约束来解决这些问题：
 
-### 3. 飞书优先使用可编辑格式
+1. 强制头脑风暴
+2. 强制 Jobs 产品判断层
+3. 强制多文档拆分
+4. 强制优先可编辑视觉结构
+5. 强制明确飞书知识库发布规则
 
-面向飞书发布时，核心图形默认采用可编辑文本格式：
+## 产出内容
 
-1. `Mermaid`
-2. Markdown 表格
-3. 编号列表 / 分层清单 / 文本卡片
+### 核心分析
 
-默认不使用：
+| 产物 | 作用 |
+| --- | --- |
+| `analysis/01-brainstorm.md` | 问题澄清、假设、备选方案、推荐方案 |
+| `analysis/02-jobs-product-lens.md` | 一句话定义、聚焦决策、体验原则、应该砍掉什么 |
 
-- `SVG`
-- `PNG / JPG`
-- 截图式图示
+### PRD 系统
 
-这意味着 PRD 发布到飞书后，图形主稿仍然可以继续改，而不是只能看。
-
-## 标准工作流
-
-1. 初始化工作目录
-2. 生成头脑风暴文档
-3. 生成 Jobs 产品判断文档
-4. 生成多文档 PRD
-5. 询问是否发布到飞书
-6. 如需要，发布到 Drive 或 Wiki
-7. 继续原型 brief / 前端原型
-8. 按需补 Deck 与运营素材
-
-## 产物结构
-
-默认生成在 `.pd/`：
-
-```text
-.pd/
-├── brief/
-├── analysis/
-│   ├── 01-brainstorm.md
-│   └── 02-jobs-product-lens.md
-├── prd/
-├── prototype/
-├── deck/
-├── ops/
-└── feishu/
-```
-
-其中 PRD 最少包括：
+PRD 默认拆成 18 篇文档，每篇面向明确主题，避免一篇文档又长又散：
 
 1. `01-project-background.md`
 2. `02-executive-summary.md`
@@ -113,38 +95,95 @@ PRD 不再只追求“完整”，还要求“适合评审会快速扫描”。
 17. `17-open-questions-and-decisions.md`
 18. `18-appendix-and-assets.md`
 
-## 图形约定
+### 配套交付
 
-### 执行摘要
+| 目录 | 作用 |
+| --- | --- |
+| `prototype/` | 原型 brief、页面流、覆盖清单 |
+| `deck/` | 汇报 deck 大纲与 JSON 结构 |
+| `ops/` | 运营 brief 与创意矩阵 |
+| `feishu/` | manifest、发布计划、发布结果 |
 
-- 封面型总览图
-- 体验旅程图
-- 本期重点卡片
+## 设计标准
 
-### 方案总览
+这套技能输出的 PRD，目标是比普通 Markdown 文档更像正式项目交付物。
 
-- 产品循环图
-- 方案结构图
-- 模块清单
+### 视觉语言
 
-### 信息架构
+- Mermaid 优先图表
+- 摘要卡与评审看板
+- 对比矩阵
+- 里程碑泳道
+- 信息层级表
+- 带说明的截图 / 参考图位
 
-默认使用双轨表达：
+### 飞书优先原则
 
-- Mermaid 图
-- 层级表
+核心图表在发布后必须仍然可编辑。默认优先级为：
 
-这样在飞书里调整导航、页面、模块层级时更顺手。
+1. `Mermaid`
+2. Markdown 表格
+3. 编号结构块
 
-### 指标部分
+静态图片只能作为补充材料，不能承载核心结构。这也是为什么架构、旅程、漏斗、信息架构不应该依赖 `SVG`、`PNG` 或截图本身。
 
-- 北极星指标
-- 过程指标
-- 指标漏斗表
+## 工作流
+
+```mermaid
+flowchart LR
+    A["用户需求"] --> B["初始化工作区"]
+    B --> C["头脑风暴"]
+    C --> D["Jobs 产品判断"]
+    D --> E["18 篇 PRD 生成"]
+    E --> F["是否发布到飞书"]
+    F --> G["原型 brief / 原型"]
+    G --> H["Deck + 运营产物"]
+```
+
+### 标准执行顺序
+
+1. 初始化工作目录
+2. 生成 brainstorm 文档
+3. 生成 Jobs 判断文档
+4. 生成多文档 PRD
+5. 询问是否发布到飞书
+6. 如需要，发布到知识库或云盘
+7. 继续原型 / deck / ops 产物
+
+## 差异点
+
+| 维度 | 常见 PRD prompt | `pd-skill` |
+| --- | --- | --- |
+| 作用域 | 单篇 markdown | 18 篇文档系统 |
+| 产品判断 | 通常没有 | 明确的 Jobs 风格过滤层 |
+| 视觉质量 | 以文字为主 | 图表、表格、评审卡、图片位 |
+| 飞书发布 | 临时组织 | 明确的知识库路径规则 |
+| 发布后可编辑性 | 常常较差 | 优先飞书原生可编辑结构 |
+| 交接质量 | 通用描述 | 面向产品 / 设计 / 研发 / 运营拆分 |
+
+## 输出目录示例
+
+```text
+.pd/
+├── brief/
+│   └── 00-request.md
+├── analysis/
+│   ├── 01-brainstorm.md
+│   └── 02-jobs-product-lens.md
+├── prd/
+│   ├── 01-project-background.md
+│   ├── 02-executive-summary.md
+│   ├── ...
+│   └── 18-appendix-and-assets.md
+├── prototype/
+├── deck/
+├── ops/
+└── feishu/
+```
 
 ## 快速开始
 
-初始化一个案例目录：
+在当前项目下创建一个产品案例目录：
 
 ```bash
 python3 scripts/init_pm_case.py --title "需求标题"
@@ -158,27 +197,66 @@ python3 scripts/init_pm_case.py --title "需求标题" --nested
 
 ## 飞书发布
 
-本技能不会默认自动发布到飞书。
+默认不会自动发布到飞书。只有在用户明确要求后才进入发布流程。
 
-只有用户明确要求发布时，才会：
+### 默认知识库结构
+
+推荐路径：
+
+```text
+知识库 -> 产品部门 -> 产品名
+```
+
+例如：
+
+```text
+知识库 -> 产品部门 -> 产品1
+```
+
+然后把完整的多文档 PRD 全部写入 `产品1` 节点下。
+
+### 发布流程
 
 1. 运行 `scripts/feishu_preflight.py`
-2. 优先确认 Wiki 路径，默认推荐：`知识库 -> 产品部门`
-3. 在 `产品部门` 下按产品名创建节点，例如 `产品1`
-4. 按 `feishu/manifest.json` 顺序逐篇发布到 `产品1`
+2. 确认知识库路径，通常是 `知识库 -> 产品部门`
+3. 定位 `产品部门` 节点
+4. 在其下创建产品节点，例如 `产品1`
+5. 将 `feishu/manifest.json` 中的所有 PRD 文档逐篇写入该节点
 
-发布前会优先检查：
+### 发布前检查
 
-- 飞书 CLI 是否已登录
-- 权限与 scopes 是否足够
-- 目标路径是否已确认
-- 如果是知识库发布，是否已经确认产品部门节点与产品名称
-- Mermaid / 表格等核心图形是否适合飞书内继续编辑
+- 飞书 CLI 可用
+- 登录与 scopes 有效
+- 知识库路径已确认
+- 产品部门节点已确认
+- 产品名称已确认
+- 核心图表发布后仍然可编辑
 
-## 相关文件
+## 能力矩阵
 
-- [SKILL.md](./SKILL.md)
-- [references/artifact-structure.md](./references/artifact-structure.md)
-- [references/feishu-publishing.md](./references/feishu-publishing.md)
-- [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md)
-- [scripts/init_pm_case.py](./scripts/init_pm_case.py)
+| 能力 | 是否包含 |
+| --- | --- |
+| Brainstorming | Yes |
+| Jobs 风格产品复盘 | Yes |
+| 视觉化 PRD 结构 | Yes |
+| 可编辑 Mermaid 图表 | Yes |
+| 飞书知识库发布 | Yes |
+| 原型 brief | Yes |
+| Deck 输出 | Yes |
+| 运营 brief | Yes |
+
+## 仓库结构
+
+| 路径 | 作用 |
+| --- | --- |
+| [SKILL.md](./SKILL.md) | 总控编排契约 |
+| [references/artifact-structure.md](./references/artifact-structure.md) | 输出目录与最低交付结构 |
+| [references/feishu-publishing.md](./references/feishu-publishing.md) | 飞书发布流程 |
+| [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md) | PRD 模板参考 |
+| [scripts/init_pm_case.py](./scripts/init_pm_case.py) | 工作区骨架生成脚本 |
+
+## 说明
+
+- 整套 PRD 设计得足够厚，是为了更像真实内部项目文档，而不是提示词堆出来的摘要。
+- 视觉丰富度服从可编辑性，飞书原生结构优先于静态好看图。
+- 允许插入图片，但图片必须带说明，且整体结构不能依赖图片本身。
