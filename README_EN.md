@@ -1,6 +1,6 @@
 <div align="center">
 
-![pd-skill logo](assets/logo.svg)
+![pd-skill logo](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/logo.svg)
 
 # pd-skill
 
@@ -20,12 +20,13 @@
 <p>
   <a href="#overview">Overview</a> ·
   <a href="#what-it-produces">What It Produces</a> ·
+  <a href="#how-to-use">How to Use</a> ·
   <a href="#workflow">Workflow</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#feishu-publishing">Feishu Publishing</a>
 </p>
 
-![pd-skill banner](assets/banner.svg)
+![pd-skill banner](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/banner.svg)
 
 </div>
 
@@ -126,6 +127,123 @@ Core diagrams must remain editable after publishing. The default order of prefer
 3. numbered structure blocks
 
 Static graphics are allowed as support material, not as the primary source of structure. That is why PRD-level architecture, journey, funnel, and IA content should not depend on `SVG`, `PNG`, or screenshots alone.
+
+## How to Use
+
+### 1. Invoke it from a skill-capable environment
+
+This repository is a skill directory, so the normal usage pattern is to call it from a parent agent or a skill-enabled environment rather than running it as a standalone application.
+
+Typical usage looks like:
+
+- load the skill in Codex / Claude Code / a skills runtime
+- provide a product request or brief
+- let the agent continue through the `pd-skill` workflow
+
+### 2. Minimal input
+
+You do not need a full spec up front. A minimal request can be as short as:
+
+```text
+Help me turn a B2B AI quality-control product idea into a complete multi-document PRD.
+```
+
+Or:
+
+```text
+I need a full PRD for a university innovation project platform with task publishing, team applications, project execution, and acceptance review.
+```
+
+### 3. Recommended input format
+
+For more reliable output, include at least:
+
+| Field | Why it matters |
+| --- | --- |
+| Product name | The delivery container and publishing label |
+| Target users | Who uses it, who decides, who pays |
+| Business scenario | Where the product is used |
+| Core problem | What must be solved first |
+| Success criteria | What counts as success |
+| Feishu publishing | Local only, or publish to wiki |
+
+Example:
+
+```text
+Product name: Product 1
+Target users: product managers, operators, business leads
+Scenario: turn loose product requests into review-ready PRDs and publish them into Feishu wiki
+Core problem: current PRDs are too shallow, too fragmented, and diagrams are not editable
+Success criteria: multi-document, visual, editable-in-Feishu PRD output
+Feishu publishing: yes, publish to Wiki -> Product Department
+```
+
+### 4. What happens after invocation
+
+By default, the skill continues through this chain:
+
+1. create the `.pd/` workspace
+2. write `brief/00-request.md`
+3. generate `analysis/01-brainstorm.md`
+4. generate `analysis/02-jobs-product-lens.md`
+5. generate the 18-document PRD
+6. if requested, continue to Feishu wiki publishing
+7. if requested, continue to prototype / deck / ops outputs
+
+### 5. Common invocation examples
+
+#### Local PRD only
+
+```text
+Generate a complete multi-document PRD for the request below. Do not publish to Feishu yet.
+[your request]
+```
+
+#### PRD plus Feishu wiki publishing
+
+```text
+Generate the full PRD and publish it to Feishu wiki under: Wiki -> Product Department. The product name is Product 1.
+```
+
+#### Continue to prototype brief
+
+```text
+After the PRD is done, continue with the prototype brief and screen flow.
+```
+
+### 6. When to use the scaffold script
+
+If you are manually preparing a local case directory, run:
+
+```bash
+python3 scripts/init_pm_case.py --title "Request Title"
+```
+
+That script only creates the workspace skeleton. The actual product reasoning and document content still come from the skill workflow.
+
+### 7. When the skill will ask for confirmation
+
+The default mode is autonomous, but it should still stop for confirmation when:
+
+- the Feishu publishing path is unclear
+- the product name is unclear
+- wiki node permissions are missing
+- business prerequisites are too incomplete
+- the request contains major contradictions
+
+### 8. What you get at minimum
+
+Minimum expected output:
+
+- 2 analysis documents
+- 18 PRD documents
+- 1 Feishu manifest
+
+Optional downstream output:
+
+- prototype brief
+- deck outline
+- ops brief
 
 ## Workflow
 
