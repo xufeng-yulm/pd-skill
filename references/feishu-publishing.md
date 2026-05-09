@@ -66,19 +66,37 @@ python3 scripts/feishu_wiki_targets.py
 
 > 发布到哪个知识库？
 
-3. 用户确认 `space_id` 后，如果还需要确认知识库内路径，读取该空间下的一级节点：
+3. 接受用户提供类似 `知识库 -> 产品部门` 的路径表达。用户如果已经说明“发布到知识库里的产品部门”，就应继续在该 `space_id` 下读取节点，逐层定位到 `产品部门`。
+
+4. 用户确认 `space_id` 后，如果还需要确认知识库内路径，读取该空间下的一级节点：
 
 ```bash
 python3 scripts/feishu_wiki_targets.py --space-id "<space_id>"
 ```
 
-4. 如果用户要挂到某个节点下，再继续读取对应父节点的子节点：
+5. 如果用户要挂到某个节点下，再继续读取对应父节点的子节点：
 
 ```bash
 python3 scripts/feishu_wiki_targets.py --space-id "<space_id>" --parent-node-token "<node_token>"
 ```
 
-5. 只有在 `space_id` 与可选的 `parent_node_token` 都经用户确认后，才允许执行写操作。
+6. 只有在 `space_id` 与可选的 `parent_node_token` 都经用户确认后，才允许执行写操作。
+
+### Wiki 默认组织方式
+
+默认优先采用下面的结构：
+
+1. `知识库`
+2. `产品部门`
+3. `<产品名>`，例如 `产品1`
+4. 在 `<产品名>` 节点下写入多文档 PRD
+
+也就是说，当用户说“发布到 知识库 -> 产品部门”时，执行时应：
+
+1. 先定位知识库空间
+2. 再定位 `产品部门` 节点
+3. 在 `产品部门` 下创建 `<产品名>` 节点
+4. 把 `feishu/manifest.json` 的全部 PRD 文档逐篇写入 `<产品名>` 节点下
 
 如果检查失败，不应继续发文档，而应等待用户完成授权。
 
@@ -124,6 +142,12 @@ npx -y @larksuite/cli@latest wiki +node-create \
   --title "<项目名>"
 ```
 
+推荐做法：
+
+1. `parent_node_token` 指向 `产品部门`
+2. 用 `--title "<产品名>"` 创建产品容器节点，例如 `产品1`
+3. 之后把全部 PRD 多文档写入该产品节点中
+
 如果本地先创建的是 Drive 文档，也可以后续用 `wiki +move` 把文档纳入知识库结构。
 
 ## 发布顺序
@@ -141,7 +165,13 @@ npx -y @larksuite/cli@latest wiki +node-create \
 9. 功能架构
 10. 技术架构
 11. 指标、风险、依赖
-12. 里程碑
+12. 范围与版本规划
+13. 交互与内容规范
+14. 数据与分析设计
+15. 上线与运营方案
+16. 里程碑
+17. 开放问题与关键决策
+18. 附录与素材索引
 
 ## 发布前检查
 
@@ -149,6 +179,7 @@ npx -y @larksuite/cli@latest wiki +node-create \
 - 飞书 CLI 已登录
 - `scripts/feishu_preflight.py` 已通过
 - 目标知识库或目标目录已经过用户确认
+- 如果是知识库发布，已确认产品部门节点和产品名称
 - 目标目录或空间权限可写
 - 本地 markdown 内容已定稿
 - mermaid 代码已经过基本语法检查

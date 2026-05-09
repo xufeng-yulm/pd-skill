@@ -21,7 +21,13 @@
 │   ├── 09-information-architecture.md
 │   ├── 10-technical-architecture.md
 │   ├── 11-metrics-risks-dependencies.md
-│   └── 12-milestones.md
+│   ├── 12-scope-and-release-plan.md
+│   ├── 13-interaction-and-content-spec.md
+│   ├── 14-data-and-analytics.md
+│   ├── 15-launch-and-operations.md
+│   ├── 16-milestones.md
+│   ├── 17-open-questions-and-decisions.md
+│   └── 18-appendix-and-assets.md
 ├── deck/
 │   ├── 01-deck-outline.md
 │   └── 02-deck-spec.json
@@ -57,6 +63,9 @@
 - `prd/06-user-flows.md`
 - `prd/09-information-architecture.md`
 - `prd/10-technical-architecture.md`
+- `prd/12-scope-and-release-plan.md`
+- `prd/14-data-and-analytics.md`
+- `prd/15-launch-and-operations.md`
 - `prototype/01-prototype-brief.md`
 - `prototype/02-screen-flow.md`
 - `prototype/04-page-coverage-checklist.md`

@@ -13,6 +13,12 @@ status: draft
 >
 > **This release is not:** [The most important thing we are intentionally not building]
 
+`Stage: Draft` `Priority: P0` `Release: MVP` `Status: Need Review`
+
+> **This page decision:** [What the reader should conclude from this document]
+>
+> **Needs approval from:** [Role / team]
+
 ## Overview
 
 ### Problem Statement
@@ -38,6 +44,14 @@ status: draft
 | Business value | [What changes for the business] |
 | Product bet | [What this initiative is fundamentally betting on] |
 | Core tradeoff | [What we are optimizing for, and what we are giving up] |
+
+## Review Board
+
+| Block | Key message | Why it matters | Owner |
+|-------|-------------|----------------|-------|
+| Decision | [Key decision] | [Impact] | [Owner] |
+| Risk | [Main risk] | [Impact] | [Owner] |
+| Dependency | [Critical dependency] | [Impact] | [Owner] |
 
 ## Product Principles
 
@@ -107,6 +121,12 @@ flowchart LR
 | Workflow layer | [Yes/No] | [Notes] |
 | Platform / service layer | [Yes/No] | [Notes] |
 | Ops / admin layer | [Yes/No] | [Notes] |
+
+### Image / Reference Slot
+
+![Reference image or screenshot placeholder](./assets/reference-overview.png)
+
+*Caption: [What this image shows, what decision it supports, and why it matters.]*
 
 ## Goals & Success Metrics
 
@@ -180,6 +200,13 @@ See [link to detailed user stories] for full acceptance criteria.
 | [Module 1] | [Purpose] | [User] | P0 |
 | [Module 2] | [Purpose] | [User] | P1 |
 
+### Tradeoff Matrix
+
+| Option | Upside | Downside | Decision |
+|--------|--------|----------|----------|
+| [Option A] | [Upside] | [Downside] | [Keep / Reject] |
+| [Option B] | [Upside] | [Downside] | [Keep / Reject] |
+
 ### Functional Requirements
 
 #### [Requirement Area 1]
@@ -204,6 +231,12 @@ See [link to detailed user stories] for full acceptance criteria.
 - [Moment of delight or speed]
 - [Critical simplification]
 - [Important guardrail or trust signal]
+
+### UI Notes / Visual References
+
+| Screen / module | Visual direction | Key component | Reference image | Note |
+|-----------------|------------------|---------------|-----------------|------|
+| [Screen 1] | [Direction] | [Component] | [Link / local path] | [Note] |
 
 ### Information Architecture View
 
@@ -257,6 +290,12 @@ flowchart TB
     C --> D["Data store / external dependency"]
 ```
 
+### Interface / Service Table
+
+| Service / module | Input | Output | Depends on | Failure mode |
+|------------------|-------|--------|------------|--------------|
+| [Service 1] | [Input] | [Output] | [Dependency] | [Fallback] |
+
 ## Dependencies & Risks
 
 ### Dependencies
@@ -272,6 +311,14 @@ flowchart TB
 |------|------------|--------|------------|
 | [Risk 1] | [H/M/L] | [H/M/L] | [Mitigation strategy] |
 | [Risk 2] | [H/M/L] | [H/M/L] | [Mitigation strategy] |
+
+### Risk Heatmap
+
+| Impact \ Likelihood | Low | Medium | High |
+|---------------------|-----|--------|------|
+| High | [ ] | [ ] | [Risk] |
+| Medium | [ ] | [Risk] | [ ] |
+| Low | [ ] | [ ] | [ ] |
 
 ## Timeline & Milestones
 
@@ -304,6 +351,8 @@ flowchart TB
 - [ ] Information architecture is represented as editable structure, not a static image
 - [ ] Information architecture includes both a diagram and a hierarchy table when publishing to Feishu
 - [ ] Metrics funnel is represented as editable structure, not a static image
+- [ ] At least one label row / decision card / review board is present
+- [ ] Any image has a caption that explains why it is included
 - [ ] Executive summary block is complete
 - [ ] At least one experience or workflow diagram is included
 - [ ] At least one architecture or system diagram is included

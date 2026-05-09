@@ -203,7 +203,13 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 9. `prd/09-information-architecture.md`
 10. `prd/10-technical-architecture.md`
 11. `prd/11-metrics-risks-dependencies.md`
-12. `prd/12-milestones.md`
+12. `prd/12-scope-and-release-plan.md`
+13. `prd/13-interaction-and-content-spec.md`
+14. `prd/14-data-and-analytics.md`
+15. `prd/15-launch-and-operations.md`
+16. `prd/16-milestones.md`
+17. `prd/17-open-questions-and-decisions.md`
+18. `prd/18-appendix-and-assets.md`
 
 必须覆盖以下内容：
 
@@ -216,6 +222,25 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 - 功能架构图
 - 技术架构图
 - 依赖、风险、假设、里程碑
+- 版本切分、MVP / V1 / Later 范围
+- 关键交互说明、状态与文案规范
+- 数据对象、埋点方案、指标口径
+- 上线节奏、灰度策略、运营预案
+- 已决策事项、待确认问题、素材索引
+
+内容密度要求：
+
+1. 每篇 PRD 文档默认至少应包含：
+   - 1 个结论型摘要块
+   - 2 个以上有信息量的小节
+   - 1 个表格、图或结构化清单
+2. 不要只写空标题或极短占位句。即使是初稿，也要写出：
+   - 该章节为什么存在
+   - 当前判断是什么
+   - 还缺什么信息
+3. 对管理层看的页面，强调结论、取舍、影响。
+4. 对研发 / 设计 / 运营看的页面，强调规则、接口、异常、流程、Owner。
+5. 每篇文档末尾优先补一个“本页结论 / 待确认项 / 下一步动作”区域，保证文档读完后能推进决策。
 
 视觉质量要求：
 
@@ -235,6 +260,8 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 5. `prd/09-information-architecture.md` 除了功能树，还要有页面 / 模块分层说明；面向飞书发布时，默认使用“Mermaid 图 + 层级表”双轨表达。
 6. `prd/10-technical-architecture.md` 除了技术架构图，还要有关键数据对象或关键接口分层说明。
 7. 面向飞书发布时，封面型总览图、体验旅程图、产品循环图、信息架构图、指标漏斗图都应优先使用飞书可编辑格式。
+8. 版式上要有明显层次，默认混合使用标题、标签行、摘要卡、表格、图、图片位、注释块，不接受所有页面都长得一样。
+9. 至少 4 篇核心 PRD 文档要包含“可视化布局块”，例如双列表格、模块卡片、风险矩阵、里程碑泳道、截图说明区。
 
 图表要求：
 
@@ -243,6 +270,22 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 - mermaid 代码直接写进对应文档，保留文本可编辑性。
 - 不要把 SVG 作为默认交付格式；除非用户明确要求静态图导出，否则不要生成 SVG、PNG、截图式图示来承载 PRD 的核心结构信息。
 - 如果交付介质支持，可在标题或信息卡片中使用少量图标 / emoji 增强扫描效率，但不要喧宾夺主。
+
+版式模块建议：
+
+- 标签行：用行内 code 或短标签标记 `P0`、`MVP`、`高风险`、`需评审`
+- 摘要卡：用引用块或 2-4 行表格总结“结论 / 原因 / 影响 / Owner”
+- 对比矩阵：用于方案取舍、版本切分、角色差异、竞品差异
+- 图文混排占位：图下要有标题、说明、结论，不要只贴图
+- 图片位：允许插入真实截图、竞品参考图、草图、埋点看板截图，但应作为补充而不是替代可编辑图
+- 决策条：单独突出“本页结论”“是否需要拍板”“进入下一步条件”
+
+图片要求：
+
+- 可以有图片，但图片必须服务于理解，不是装饰。
+- 优先使用真实界面截图、竞品参考图、白板草图、数据看板截图。
+- 图片下方必须带简短说明：图片展示什么、结论是什么、与当前方案有什么关系。
+- 面向飞书发布时，图片是补充层；核心结构仍然优先使用可编辑文本格式表达。
 
 推荐映射：
 
@@ -262,13 +305,15 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 
 - 用户说“要”：
   1. 运行 `scripts/feishu_preflight.py`
-  2. 先问用户要发布到普通云盘目录，还是飞书知识库
-  3. 如果是飞书知识库，先运行 `scripts/feishu_wiki_targets.py` 读取知识库列表，并把候选项展示给用户确认
-  4. 用户确认具体 `space_id` 后，如需指定知识库内路径，再运行 `scripts/feishu_wiki_targets.py --space-id <space_id> [--parent-node-token <token>]` 读取节点，继续让用户确认最终父节点路径
-  5. 检查本机是否已安装并登录飞书 CLI
-  6. 检查当前授权状态和所需 scopes
-  7. 如果未授权、scope 不足，或用户尚未确认目标路径，明确提示并等待，不要偷偷跳过
-  8. 等授权和目标路径都明确后，再执行发布
+  2. 优先按“飞书知识库 -> 产品部门”路径发布，除非用户明确要求发布到普通云盘目录
+  3. 如果是飞书知识库，先运行 `scripts/feishu_wiki_targets.py` 读取知识库列表，并接受用户指定发布路径，例如：`知识库 -> 产品部门`
+  4. 用户确认具体 `space_id` 后，继续运行 `scripts/feishu_wiki_targets.py --space-id <space_id> [--parent-node-token <token>]` 逐层读取节点，直到定位到“产品部门”对应节点
+  5. 在“产品部门”节点下，按产品名称创建容器节点，例如 `产品1`
+  6. 再在该产品节点下创建 PRD 多文档目录结构，并把 `feishu/manifest.json` 中的全部文档逐篇写入 `产品1` 下
+  7. 检查本机是否已安装并登录飞书 CLI
+  8. 检查当前授权状态和所需 scopes
+  9. 如果未授权、scope 不足，或用户尚未确认目标路径 / 产品名，明确提示并等待，不要偷偷跳过
+  10. 等授权和目标路径都明确后，再执行发布
 - 用户说“不要”：
   1. 不做任何飞书写操作
   2. 直接以本地多文档产物作为交付结果
@@ -316,8 +361,8 @@ npx -y @larksuite/cli@latest docs +create --title "<文档标题>" --markdown @<
 python3 scripts/feishu_wiki_targets.py
 ```
 
-2. 把返回的 `space_id` / `name` 列表展示给用户，明确问“发布到哪个知识库”
-3. 如果还需要挂到知识库内某个目录节点下，再读取子节点：
+2. 把返回的 `space_id` / `name` 列表展示给用户，明确问“发布到哪个知识库”，并允许用户直接给出类似 `知识库 -> 产品部门` 的目标路径
+3. 如果需要挂到知识库内某个目录节点下，再读取子节点：
 
 ```bash
 python3 scripts/feishu_wiki_targets.py --space-id "<space_id>"
@@ -329,8 +374,9 @@ python3 scripts/feishu_wiki_targets.py --space-id "<space_id>"
 python3 scripts/feishu_wiki_targets.py --space-id "<space_id>" --parent-node-token "<node_token>"
 ```
 
-4. 把候选节点展示给用户，明确确认最终 `parent_node_token`
-5. 只有在 `space_id` 和可选的 `parent_node_token` 都经过用户确认后，才允许执行创建
+4. 把候选节点展示给用户，明确确认最终 `parent_node_token`；若用户目标是“产品部门”，则应继续定位到该节点
+5. 当 `parent_node_token` 对应“产品部门”后，再按产品名称创建上层容器节点，如 `产品1`
+6. 只有在 `space_id`、`parent_node_token`、产品名称都经过用户确认后，才允许执行创建
 
 确认后可用：
 
@@ -345,6 +391,15 @@ npx -y @larksuite/cli@latest wiki +node-create --space-id "<space_id>" --parent-
 ```
 
 然后按目标环境继续创建或迁移文档节点。
+
+知识库默认推荐结构：
+
+1. `知识库`
+2. `产品部门`
+3. `<产品名>`，例如 `产品1`
+4. 在 `<产品名>` 节点下承载该产品的 PRD 多文档
+
+如果用户明确提供的路径就是“知识库 -> 产品部门”，则默认应在 `产品部门` 下创建 `<产品名>` 节点，然后把多文档 PRD 全部写入 `<产品名>` 中。
 
 发布后，把飞书链接和 token 记录到：
 
@@ -482,6 +537,7 @@ npx -y @larksuite/cli@latest wiki +node-create --space-id "<space_id>" --parent-
 - 已完成 `steve-jobs-perspective` 收敛，且 `analysis/02-jobs-product-lens.md` 已完成
 - 已使用 `subskills/deliver-prd`，且至少一套 PRD 文档已完成
 - 已使用 `subskills/utility-mermaid-diagrams`，且至少包含 1 个用户流程图和 2 个架构/结构图
+- 已包含范围版本、数据分析、上线运营这 3 类补充 PRD 文档，而不是只交主说明文
 - 若用户要求飞书发布：发布已完成，或已明确记录阻塞原因、授权状态与待执行命令
 - 若用户不要求飞书发布：本地多文档产物已完成即可
 - 若要求原型：已使用 `subskills/frontend-design`，且原型 brief、页面覆盖清单与可预览原型代码已完成
