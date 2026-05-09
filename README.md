@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.svg" alt="pd-skill logo" width="96" height="96" />
+![pd-skill logo](assets/logo.svg)
 
 # pd-skill
 
@@ -25,7 +25,7 @@
   <a href="#飞书发布">飞书发布</a>
 </p>
 
-<img src="assets/banner.svg" alt="pd-skill banner" width="100%" />
+![pd-skill banner](assets/banner.svg)
 
 </div>
 
