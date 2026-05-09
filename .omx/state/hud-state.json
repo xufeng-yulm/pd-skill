@@ -1,6 +1,6 @@
 {
-  "last_turn_at": "2026-05-09T05:43:28.941Z",
-  "turn_count": 14,
-  "last_progress_at": "2026-05-09T05:43:28.941Z",
-  "last_agent_output": "你说得对，之前 README 更像“项目介绍”，不够像“怎么用”。\n\n我已经补上了真正的使用方法，而且中英文都加了：\n\n- 中文：[README.md](/Users/yulm/.agents/ski"
+  "last_turn_at": "2026-05-09T06:08:18.436Z",
+  "turn_count": 15,
+  "last_progress_at": "2026-05-09T06:08:18.436Z",
+  "last_agent_output": "你这个反馈是对的，而且本质上不是“模型不够聪明”，而是这个 skill 之前的“连续执行契约”写得不够硬。\n\n我已经直接改了 skill 规则，让它默认更像一个端到端执行器，而不是阶段演示器。\n\n这次"
 }

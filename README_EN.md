@@ -268,6 +268,37 @@ flowchart LR
 6. publish to wiki or drive if requested
 7. continue to prototype / deck / ops outputs as needed
 
+### Default Continuation Behavior
+
+This skill is designed to continue through the delivery chain within a single conversation whenever possible.
+
+If the user does not explicitly limit the scope, the agent should not stop after intermediate milestones such as:
+
+- only finishing brainstorming
+- only finishing the Jobs product lens
+- only finishing part of the PRD
+- only finishing the prototype brief
+
+It should continue until:
+
+1. the local deliverables in scope are complete
+2. Feishu publishing is complete, or clearly blocked
+3. the user explicitly asks to pause or narrow the scope
+
+### How to Avoid Midway Stops
+
+Recommended prompt pattern:
+
+```text
+Complete the full delivery in one pass: analysis + multi-document PRD + Feishu wiki publishing prep. Do not stop midway unless there is a real blocker.
+```
+
+If you only want one stage, say so explicitly:
+
+```text
+Generate the local multi-document PRD only. Do not continue to prototype or Feishu publishing.
+```
+
 ## What Makes It Different
 
 | Area                  | Typical PRD prompt   | `pd-skill`                                      |
