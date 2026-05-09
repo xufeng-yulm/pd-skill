@@ -1,0 +1,4 @@
+interface:
+  display_name: "PD 产品经理"
+  short_description: "一键产出 PRD、飞书文档、原型、PPT等"
+  default_prompt: "Use $product-manager to turn a product requirement into brainstorms, split PRD docs, Feishu documents, prototype briefs, deck outlines, and ops creative briefs."
