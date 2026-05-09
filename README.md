@@ -2,7 +2,6 @@
 
 ![pd-skill logo](assets/logo.svg)
 
-
 # pd-skill
 
 <p><strong>面向 AI 工作流的产品文档系统，用于生成视觉化 PRD、飞书知识库发布、原型 brief 与上线级规划产物。</strong></p>
@@ -27,7 +26,7 @@
   <a href="#飞书发布">飞书发布</a>
 </p>
 
-![pd-skill banner](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/banner.svg)
+![pd-skill banner](assets/banner.svg)
 
 </div>
 
@@ -69,9 +68,9 @@
 
 ### 核心分析
 
-| 产物 | 作用 |
-| --- | --- |
-| `analysis/01-brainstorm.md` | 问题澄清、假设、备选方案、推荐方案 |
+| 产物                               | 作用                                         |
+| ---------------------------------- | -------------------------------------------- |
+| `analysis/01-brainstorm.md`        | 问题澄清、假设、备选方案、推荐方案           |
 | `analysis/02-jobs-product-lens.md` | 一句话定义、聚焦决策、体验原则、应该砍掉什么 |
 
 ### PRD 系统
@@ -99,12 +98,12 @@ PRD 默认拆成 18 篇文档，每篇面向明确主题，避免一篇文档又
 
 ### 配套交付
 
-| 目录 | 作用 |
-| --- | --- |
+| 目录         | 作用                         |
+| ------------ | ---------------------------- |
 | `prototype/` | 原型 brief、页面流、覆盖清单 |
-| `deck/` | 汇报 deck 大纲与 JSON 结构 |
-| `ops/` | 运营 brief 与创意矩阵 |
-| `feishu/` | manifest、发布计划、发布结果 |
+| `deck/`      | 汇报 deck 大纲与 JSON 结构   |
+| `ops/`       | 运营 brief 与创意矩阵        |
+| `feishu/`    | manifest、发布计划、发布结果 |
 
 ## 设计标准
 
@@ -159,13 +158,13 @@ PRD 默认拆成 18 篇文档，每篇面向明确主题，避免一篇文档又
 
 如果你希望结果更稳，建议输入至少包含这些信息：
 
-| 信息 | 说明 |
-| --- | --- |
-| 产品名称 | 例如 `产品1` |
-| 目标用户 | 谁使用，谁决策，谁付费 |
-| 业务场景 | 在什么场景下使用 |
-| 核心问题 | 当前最想解决什么 |
-| 成功标准 | 你认为什么算成功 |
+| 信息           | 说明                       |
+| -------------- | -------------------------- |
+| 产品名称       | 例如 `产品1`               |
+| 目标用户       | 谁使用，谁决策，谁付费     |
+| 业务场景       | 在什么场景下使用           |
+| 核心问题       | 当前最想解决什么           |
+| 成功标准       | 你认为什么算成功           |
 | 是否要发布飞书 | 本地交付，还是要同步知识库 |
 
 示例：
@@ -271,14 +270,14 @@ flowchart LR
 
 ## 差异点
 
-| 维度 | 常见 PRD prompt | `pd-skill` |
-| --- | --- | --- |
-| 作用域 | 单篇 markdown | 18 篇文档系统 |
-| 产品判断 | 通常没有 | 明确的 Jobs 风格过滤层 |
-| 视觉质量 | 以文字为主 | 图表、表格、评审卡、图片位 |
-| 飞书发布 | 临时组织 | 明确的知识库路径规则 |
-| 发布后可编辑性 | 常常较差 | 优先飞书原生可编辑结构 |
-| 交接质量 | 通用描述 | 面向产品 / 设计 / 研发 / 运营拆分 |
+| 维度           | 常见 PRD prompt | `pd-skill`                        |
+| -------------- | --------------- | --------------------------------- |
+| 作用域         | 单篇 markdown   | 18 篇文档系统                     |
+| 产品判断       | 通常没有        | 明确的 Jobs 风格过滤层            |
+| 视觉质量       | 以文字为主      | 图表、表格、评审卡、图片位        |
+| 飞书发布       | 临时组织        | 明确的知识库路径规则              |
+| 发布后可编辑性 | 常常较差        | 优先飞书原生可编辑结构            |
+| 交接质量       | 通用描述        | 面向产品 / 设计 / 研发 / 运营拆分 |
 
 ## 输出目录示例
 
@@ -353,26 +352,26 @@ python3 scripts/init_pm_case.py --title "需求标题" --nested
 
 ## 能力矩阵
 
-| 能力 | 是否包含 |
-| --- | --- |
-| Brainstorming | Yes |
-| Jobs 风格产品复盘 | Yes |
-| 视觉化 PRD 结构 | Yes |
-| 可编辑 Mermaid 图表 | Yes |
-| 飞书知识库发布 | Yes |
-| 原型 brief | Yes |
-| Deck 输出 | Yes |
-| 运营 brief | Yes |
+| 能力                | 是否包含 |
+| ------------------- | -------- |
+| Brainstorming       | Yes      |
+| Jobs 风格产品复盘   | Yes      |
+| 视觉化 PRD 结构     | Yes      |
+| 可编辑 Mermaid 图表 | Yes      |
+| 飞书知识库发布      | Yes      |
+| 原型 brief          | Yes      |
+| Deck 输出           | Yes      |
+| 运营 brief          | Yes      |
 
 ## 仓库结构
 
-| 路径 | 作用 |
-| --- | --- |
-| [SKILL.md](./SKILL.md) | 总控编排契约 |
-| [references/artifact-structure.md](./references/artifact-structure.md) | 输出目录与最低交付结构 |
-| [references/feishu-publishing.md](./references/feishu-publishing.md) | 飞书发布流程 |
-| [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md) | PRD 模板参考 |
-| [scripts/init_pm_case.py](./scripts/init_pm_case.py) | 工作区骨架生成脚本 |
+| 路径                                                                                           | 作用                   |
+| ---------------------------------------------------------------------------------------------- | ---------------------- |
+| [SKILL.md](./SKILL.md)                                                                         | 总控编排契约           |
+| [references/artifact-structure.md](./references/artifact-structure.md)                         | 输出目录与最低交付结构 |
+| [references/feishu-publishing.md](./references/feishu-publishing.md)                           | 飞书发布流程           |
+| [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md) | PRD 模板参考           |
+| [scripts/init_pm_case.py](./scripts/init_pm_case.py)                                           | 工作区骨架生成脚本     |
 
 ## 说明
 

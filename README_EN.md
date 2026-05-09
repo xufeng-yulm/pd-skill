@@ -1,6 +1,6 @@
 <div align="center">
 
-![pd-skill logo](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/logo.svg)
+![pd-skill logo](assets/logo.svg)
 
 # pd-skill
 
@@ -26,7 +26,7 @@
   <a href="#feishu-publishing">Feishu Publishing</a>
 </p>
 
-![pd-skill banner](https://raw.githubusercontent.com/ylm-hmt/pd-skill/master/assets/banner.svg)
+![pd-skill banner](assets/banner.svg)
 
 </div>
 
@@ -68,9 +68,9 @@ Most AI-generated PRDs fail in predictable ways:
 
 ### Core Analysis
 
-| Artifact | Purpose |
-| --- | --- |
-| `analysis/01-brainstorm.md` | Problem framing, assumptions, solution options, recommendation |
+| Artifact                           | Purpose                                                                  |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| `analysis/01-brainstorm.md`        | Problem framing, assumptions, solution options, recommendation           |
 | `analysis/02-jobs-product-lens.md` | One-line definition, focus decisions, experience principles, what to cut |
 
 ### PRD System
@@ -98,12 +98,12 @@ The PRD is intentionally split into 18 documents so each page can stay focused a
 
 ### Supporting Deliverables
 
-| Directory | Purpose |
-| --- | --- |
+| Directory    | Purpose                                               |
+| ------------ | ----------------------------------------------------- |
 | `prototype/` | Prototype brief, screen flow, page coverage checklist |
-| `deck/` | Deck outline and JSON presentation spec |
-| `ops/` | Ops brief and creative matrix |
-| `feishu/` | Manifest, publishing plan, publishing result |
+| `deck/`      | Deck outline and JSON presentation spec               |
+| `ops/`       | Ops brief and creative matrix                         |
+| `feishu/`    | Manifest, publishing plan, publishing result          |
 
 ## Design Standards
 
@@ -158,14 +158,14 @@ I need a full PRD for a university innovation project platform with task publish
 
 For more reliable output, include at least:
 
-| Field | Why it matters |
-| --- | --- |
-| Product name | The delivery container and publishing label |
-| Target users | Who uses it, who decides, who pays |
-| Business scenario | Where the product is used |
-| Core problem | What must be solved first |
-| Success criteria | What counts as success |
-| Feishu publishing | Local only, or publish to wiki |
+| Field             | Why it matters                              |
+| ----------------- | ------------------------------------------- |
+| Product name      | The delivery container and publishing label |
+| Target users      | Who uses it, who decides, who pays          |
+| Business scenario | Where the product is used                   |
+| Core problem      | What must be solved first                   |
+| Success criteria  | What counts as success                      |
+| Feishu publishing | Local only, or publish to wiki              |
 
 Example:
 
@@ -270,14 +270,14 @@ flowchart LR
 
 ## What Makes It Different
 
-| Area | Typical PRD prompt | `pd-skill` |
-| --- | --- | --- |
-| Scope | Single markdown page | 18-document system |
-| Product judgment | Usually absent | Explicit Jobs-style filter |
-| Visual quality | Mostly text | diagrams, tables, review cards, reference slots |
-| Feishu publishing | Ad hoc | explicit wiki path rules |
-| Editing after publish | Often poor | Feishu-native structures first |
-| Handoff quality | Generic | product, design, eng, ops-ready split |
+| Area                  | Typical PRD prompt   | `pd-skill`                                      |
+| --------------------- | -------------------- | ----------------------------------------------- |
+| Scope                 | Single markdown page | 18-document system                              |
+| Product judgment      | Usually absent       | Explicit Jobs-style filter                      |
+| Visual quality        | Mostly text          | diagrams, tables, review cards, reference slots |
+| Feishu publishing     | Ad hoc               | explicit wiki path rules                        |
+| Editing after publish | Often poor           | Feishu-native structures first                  |
+| Handoff quality       | Generic              | product, design, eng, ops-ready split           |
 
 ## Example Output Tree
 
@@ -352,26 +352,26 @@ Then the skill writes the full multi-document PRD into `产品1`.
 
 ## Capability Matrix
 
-| Capability | Included |
-| --- | --- |
-| Brainstorming | Yes |
-| Jobs-style product review | Yes |
-| Visual PRD structure | Yes |
-| Editable Mermaid diagrams | Yes |
-| Feishu wiki publishing | Yes |
-| Prototype brief | Yes |
-| Deck output | Yes |
-| Ops creative brief | Yes |
+| Capability                | Included |
+| ------------------------- | -------- |
+| Brainstorming             | Yes      |
+| Jobs-style product review | Yes      |
+| Visual PRD structure      | Yes      |
+| Editable Mermaid diagrams | Yes      |
+| Feishu wiki publishing    | Yes      |
+| Prototype brief           | Yes      |
+| Deck output               | Yes      |
+| Ops creative brief        | Yes      |
 
 ## Repository Layout
 
-| Path | Role |
-| --- | --- |
-| [SKILL.md](./SKILL.md) | Master orchestration contract |
-| [references/artifact-structure.md](./references/artifact-structure.md) | Output tree and minimum delivery structure |
-| [references/feishu-publishing.md](./references/feishu-publishing.md) | Feishu publishing workflow |
-| [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md) | PRD template reference |
-| [scripts/init_pm_case.py](./scripts/init_pm_case.py) | Workspace scaffold generator |
+| Path                                                                                           | Role                                       |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [SKILL.md](./SKILL.md)                                                                         | Master orchestration contract              |
+| [references/artifact-structure.md](./references/artifact-structure.md)                         | Output tree and minimum delivery structure |
+| [references/feishu-publishing.md](./references/feishu-publishing.md)                           | Feishu publishing workflow                 |
+| [subskills/deliver-prd/references/TEMPLATE.md](./subskills/deliver-prd/references/TEMPLATE.md) | PRD template reference                     |
+| [scripts/init_pm_case.py](./scripts/init_pm_case.py)                                           | Workspace scaffold generator               |
 
 ## Notes
 
