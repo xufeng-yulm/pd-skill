@@ -18,6 +18,10 @@ status: draft
 > **This page decision:** [What the reader should conclude from this document]
 >
 > **Needs approval from:** [Role / team]
+>
+> **Upstream inputs:** [Which docs or sections this page depends on]
+>
+> **Downstream outputs:** [Which docs, meetings, or teams will use this page next]
 
 ## Overview
 
@@ -52,6 +56,14 @@ status: draft
 | Decision | [Key decision] | [Impact] | [Owner] |
 | Risk | [Main risk] | [Impact] | [Owner] |
 | Dependency | [Critical dependency] | [Impact] | [Owner] |
+
+## Review Use
+
+| Meeting / use case | What this page should unblock |
+|--------------------|-------------------------------|
+| Product review | [Decision to make] |
+| Engineering breakdown | [What gets decomposed next] |
+| Milestone review | [What gets scheduled or gated] |
 
 ## Product Principles
 
@@ -220,6 +232,12 @@ See [link to detailed user stories] for full acceptance criteria.
 - FR-3: [Requirement statement]
 - FR-4: [Requirement statement]
 
+### Requirement Breakdown Matrix
+
+| Requirement | User task | Trigger | System response | Acceptance signal | Downstream owner |
+|-------------|-----------|---------|-----------------|-------------------|------------------|
+| [FR-1] | [Task] | [Trigger] | [Response] | [Acceptance] | [Eng / QA / Ops] |
+
 ### User Experience
 
 <!-- Key UX decisions, flows, or wireframe references -->
@@ -296,6 +314,12 @@ flowchart TB
 |------------------|-------|--------|------------|--------------|
 | [Service 1] | [Input] | [Output] | [Dependency] | [Fallback] |
 
+### Release Gate Table
+
+| Gate | What must be true | Owner | Evidence |
+|------|-------------------|-------|----------|
+| [Gate 1] | [Condition] | [Owner] | [Proof] |
+
 ## Dependencies & Risks
 
 ### Dependencies
@@ -363,3 +387,8 @@ flowchart TB
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 1.0 | [Date] | [Author] | Initial draft |
+
+## Cross-Document Handoff
+
+- This page should explicitly point readers to the next document they need.
+- Core multi-file PRDs should maintain traceability across problem -> solution -> requirements -> rules -> architecture -> release plan.

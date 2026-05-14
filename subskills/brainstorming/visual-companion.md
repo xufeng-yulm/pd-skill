@@ -28,7 +28,7 @@ A question *about* a UI topic is not automatically a visual question. "What kind
 
 The server watches a directory for HTML files and serves the newest one to the browser. You write HTML content to `screen_dir`, the user sees it in their browser and can click to select options. Selections are recorded to `state_dir/events` that you read on your next turn.
 
-**Content fragments vs full documents:** If your HTML file starts with `<!DOCTYPE` or `<html`, the server serves it as-is (just injects the helper script). Otherwise, the server automatically wraps your content in the frame template — adding the header, CSS theme, selection indicator, and all interactive infrastructure. **Write content fragments by default.** Only write full documents when you need complete control over the page.
+**Content fragments vs full documents:** If your HTML file starts with `<!DOCTYPE` or `<html`, the server serves it as-is (just injects the helper script). Otherwise, the server automatically wraps it in the frame template. **Write content fragments by default for comparisons, diagrams, and quick mockups.** For final-stage product prototype previews, prefer full documents or an app in `prototype/web/` so you can control routing, density, and real layout structure.
 
 ## Starting a Session
 
@@ -154,6 +154,8 @@ Write just the content that goes inside the page. The server wraps it in the fra
 ```
 
 That's it. No `<html>`, no CSS, no `<script>` tags needed. The server provides all of that.
+
+Important: the frame template is for fast visual discussion, not a substitute for a deliverable product prototype. If the user is asking for a shippable-looking prototype, use this companion only for intermediate comparison steps and then switch to a real HTML/React prototype.
 
 ## CSS Classes Available
 

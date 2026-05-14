@@ -17,6 +17,8 @@ A Product Requirements Document is the primary specification artifact that commu
 
 In this workspace, the PRD is expected to be presentation-grade rather than a plain wall of text. It should be easy to scan in a review meeting, with deliberate use of diagrams, summary blocks, structured tables, and visual hierarchy.
 
+In this workspace, "presentation-grade" is still not enough by itself. The target quality bar is implementation-ready for V1 delivery: the downstream product, design, engineering, QA, and ops teams should be able to start real work from the PRD without translating it again.
+
 ## When to Use
 
 - After problem and solution alignment, before engineering work begins
@@ -60,6 +62,13 @@ When asked to create a PRD, follow these steps:
    - comparison or prioritization tables where tradeoffs matter
    - concise callouts for critical decisions, risks, or constraints
    - prefer editable text-native formats that can survive a Feishu publish flow; avoid SVG or screenshot-style diagrams as the default artifact
+10. **Make It Implementation-Ready**
+   For the core PRD set, strengthen each page so it can directly support execution:
+   - keep `01-04` minimal and only preserve background required to understand the work
+   - make `05-18` the real handoff surface for product, design, engineering, QA, and ops
+   - add requirement-to-rule-to-service-to-test traceability where relevant
+   - include direct next actions, owners, and release gates instead of abstract discussion prompts
+   - add upstream/downstream chapter pointers when the document is part of a multi-file PRD
 
 ## Output Format
 
@@ -78,6 +87,8 @@ Before finalizing, verify:
 - [ ] Document is readable in under 15 minutes
 - [ ] The document has enough visual structure that a stakeholder can scan it quickly
 - [ ] Diagrams clarify the product or system rather than repeat prose
+- [ ] The doc can support direct execution: design, engineering, QA, data, or ops can pick up work from it
+- [ ] V1 scope is broken down deeply enough that engineering can estimate and split work
 
 ## Examples
 

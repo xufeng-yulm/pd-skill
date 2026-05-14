@@ -40,3 +40,57 @@ Interpret creatively and make unexpected choices that feel genuinely designed fo
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
 Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+
+## Prototype Delivery Standard
+
+When this skill is used to build a prototype for a product workflow, the default target is a **ship-ready product prototype**, not a mood board, not a landing page, and not a sparse wireframe.
+
+Before implementation:
+
+1. Lock 1-2 GitHub product references that match the product type.
+2. State what structural patterns are being borrowed from each reference.
+3. State what branding or stylistic details will **not** be copied.
+
+Preferred reference families:
+
+- SaaS dashboard / operations console: `midday-ai/midday`
+- Scheduling / settings-heavy multi-role app: `calcom/cal.com`
+- Docs / collaboration / knowledge workspace: `outline/outline`
+- Complex admin / orchestration console: `appsmithorg/appsmith`
+- Monitoring / status / metrics-heavy product: `openstatusHQ/openstatus`
+
+## What Good Looks Like
+
+A strong prototype usually includes:
+
+- Application shell with stable navigation
+- Role-aware entry points or route switcher
+- Real work surfaces: tables, filters, forms, drawers, timelines, tabs, charts, detail panes
+- Complete state coverage: empty, loading, error, disabled, no-permission
+- Mobile behavior that still preserves task completion, not just visual scaling
+
+The UI should feel like a real operator could use it for 30 minutes, not like a static design sample.
+
+## Anti-Slop Rules
+
+Avoid default AI-looking patterns:
+
+- giant hero blocks for back-office products
+- center-stacked marketing cards used as application screens
+- purple/blue gradient-first themes
+- oversized rounded surfaces everywhere
+- decorative dashboards with no dense information
+- pages that contain only cards and no lists, tables, filters, or actionable detail
+
+For B2B, admin, CRM, operations, marketplace, or workflow software, bias toward:
+
+- quiet, restrained color
+- strong hierarchy
+- dense but readable layouts
+- compact controls
+- predictable navigation
+- obvious next actions
+
+## Delivery Notes
+
+If the request is for a full prototype set, do not stop at one homepage. Build a connected surface with routing or a clear screen switcher and cover the core user journeys end to end.
