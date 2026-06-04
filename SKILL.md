@@ -40,6 +40,19 @@ description: 端到端产品经理编排技能。用于把一句需求或模糊�
 9. 面向飞书发布的图形必须优先使用飞书内可继续编辑的文本格式，不默认输出 SVG、截图式流程图或其他静态图片。
 10. 默认执行策略是“一次对话尽量跑完整条交付链路”，不要做完一个中间产物就停下来等待用户再次提醒。
 
+### PM 铁律（必读）
+
+本技能的产品判断在每一步都要对照下面八条原则执行，违反任一条都不算合格交付。完整说明与适用步骤见 `references/product-thinking-frameworks.md` §1。
+
+1. 先说问题，再说方案。Stakeholders 带着方案来，PM 的工作是先还原背后的用户痛点或业务目标。
+2. PRD 之前先写 Press Release。一段话说不清用户为什么在乎，就还没准备好写需求。
+3. 没有 owner / 成功指标 / 时间窗的需求，不进路线图。
+4. 经常说 No。保护团队焦点。
+5. 构建前验证，上线后衡量。重大范围不拿证据不立项。
+6. 对齐 ≠ 共识。共识是奢侈品，清晰是必需品。
+7. 惊喜 = 失败。延期、范围变更、未达指标都不能让 stakeholders 突然知道。
+8. 范围蠕变会杀死产品。每个变更请求都要被记录、对照目标、明确接受 / 延后 / 拒绝。
+
 ## 连续执行约定
 
 这是一个端到端交付技能，不是分段演示技能。
@@ -77,12 +90,15 @@ description: 端到端产品经理编排技能。用于把一句需求或模糊�
 1. 需求分析完成
    - 已产出 `analysis/01-brainstorm.md`
    - 文档中已覆盖用户、场景、核心问题、方案备选、推荐方案、关键假设、待确认项
+   - 文档中已显式回答「Why Now?」并写明「不做的清单」与「Press Release 草稿」（PM 铁律 1 / 2 / 4 / 8）
 
 2. 产品判断收敛完成
    - 已产出 `analysis/02-jobs-product-lens.md`
    - 已明确一句话产品定义、Focus / Say No、核心体验原则、该砍掉什么、为什么现在做
+   - 重大 V1 / 新方向必须附机会评估（Why Now? + RICE + 方案选项表），参考 `references/product-thinking-frameworks.md` §4 / §5
 
 3. PRD 达到“可直接开发”标准
+   - `00` 已明确业务蓝图、商业模式、战略定位、关键业务指标，作为后续所有 PRD 文档的顶层框架
    - `05` 到 `18` 已经能支撑产品、设计、研发、测试、运营直接进入各自执行动作
    - `01` 到 `04` 只保留必要背景，不再承担大段评审叙事
 
@@ -125,6 +141,9 @@ description: 端到端产品经理编排技能。用于把一句需求或模糊�
 - `subskills/utility-mermaid-diagrams`
   来源：`product-on-purpose/pm-skills`
   用途：为 PRD 产出流程图、架构图、状态图、时序图等。
+- `lark-whiteboard`（按需）
+  来源：`larksuite/cli`
+  用途：面向飞书发布时，把 PRD 里的 mermaid / 表格 / 编号结构路由为飞书可继续编辑的画板（架构图、泳道、漏斗、里程碑等复杂图形）。
 - `subskills/utility-slideshow-creator`
   来源：`product-on-purpose/pm-skills`
   用途：沉淀汇报 PPT 的 deck 结构、分镜和逐页内容。
@@ -183,6 +202,16 @@ description: 端到端产品经理编排技能。用于把一句需求或模糊�
      - `deck/01-deck-outline.md`
      - `deck/02-deck-spec.json`
 
+2. `lark-whiteboard`
+   - 对应阶段：飞书图表发布（复杂画板）
+   - 触发条件：
+     - 用户明确要求把 PRD 发布到飞书；且
+     - 至少一张核心图表是 mermaid 无法表达或表达不清的复杂图形（架构图、泳道、漏斗、组织架构、里程碑、金字塔、鱼骨图等）
+   - 最低产物：
+     - `.pd/diagrams/YYYY-MM-DDTHHMMSS/diagram.{mmd,svg,json,png}`（按 lark-whiteboard 产物规范）
+     - 飞书画板已写入并落 `whiteboard_token` 到 `feishu/publish-result.md`
+   - 约束：未走完整 `lark-whiteboard` 渲染 & 写入流程，不得宣称「飞书图表画板化」完成
+
 ## 标准工作流
 
 ### 第 1 步：接收需求并建立工作目录
@@ -207,13 +236,16 @@ python3 scripts/init_pm_case.py --title "需求标题"
 
 - `subskills/brainstorming/SKILL.md`
 - 需要视觉讨论时再读 `subskills/brainstorming/visual-companion.md`
+- 产品 / 商业思维框架可从 `references/product-thinking-frameworks.md` 取用
 
 但这里按“自治模式”使用它：
 
 1. 补齐目标用户、场景、核心问题、约束、成功标准。
 2. 至少提出 2-3 个方向，明确推荐方案和取舍。
 3. 列出关键假设、未知项、依赖项、风险项。
-4. 若用户没有提供必要信息，做显式假设并写入文档，不要因为小缺口停住。
+4. **回答「Why Now?」**——市场窗口 / 用户行为拐点 / 竞争压力 / 内部能力成熟度四类信号中至少写明 1 类，没有为什么是现在的论证不能进入 PRD。详见 `references/product-thinking-frameworks.md` §3。
+5. **明确写下「我们不做什么」**——把 Not Building 列表写到文档里，PM 铁律 4 / 8 的硬约束。详见 `references/product-thinking-frameworks.md` §1。
+6. 若用户没有提供必要信息，做显式假设并写入文档，不要因为小缺口停住。
 
 把结果沉淀到：
 
@@ -229,6 +261,9 @@ python3 scripts/init_pm_case.py --title "需求标题"
 - 推荐方案
 - 关键假设
 - 待确认问题
+- **Why Now? 触发信号**（从产品 / 商业思维框架 §3 选一类）
+- **不做的清单**（PM 铁律 4 / 8）
+- **Press Release 草稿**（200 字以内，回答「用户为什么在乎」，见产品 / 商业思维框架 §2）
 
 ### 第 2.5 步：用乔布斯视角收敛产品判断
 
@@ -278,6 +313,7 @@ PRD 编写输入必须同时来自以下两份分析：
 
 PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 
+0. `prd/00-business-blueprint.md`
 1. `prd/01-project-background.md`
 2. `prd/02-executive-summary.md`
 3. `prd/03-problem-and-goals.md`
@@ -299,6 +335,7 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 
 必须覆盖以下内容：
 
+- 业务蓝图、商业模式、战略定位、价值主张、核心业务环节、关键业务指标（来自 `prd/00-business-blueprint.md`）
 - 项目背景、业务上下文、为什么现在做
 - 问题、目标、非目标、成功指标
 - 用户角色与典型场景
@@ -318,6 +355,7 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 
 1. 目标不是“第一轮结构化成稿”，而是默认产出可直接进入开发、设计出图、研发拆解、测试设计和运营准备的文档骨架。
 2. 核心章节必须优先服务真实交接动作：
+   - 战略 / 业务输入：`00`（业务蓝图、关键业务指标、价值主张）
    - 产品 / 设计 / 研发启动：`05` `06` `07` `09` `10` `13`
    - 测试 / 数据 / 联调：`08` `10` `14`
    - 发布 / 运营 / 项目推进：`11` `12` `15` `16` `17`
@@ -340,18 +378,19 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
    - 当前判断是什么
    - 还缺什么信息
 3. 对管理层看的页面，强调结论、取舍、影响。
-4. 对研发 / 设计 / 运营看的页面，强调规则、接口、异常、流程、Owner、输入输出物。
-5. 页面需要清楚呈现当前结论、剩余不确定性与后续决策方向，但不要机械套用统一的尾部三段式结构。
-6. 核心章节默认要显式写出上游输入和下游输出，避免章节之间断开。
-7. `05` 到 `18` 每页都应直接呈现产品结论、规则、流程、约束与执行口径，不写“本页交付给谁”“输入来自哪里”这类元叙述。
-8. `07` `08` `10` 三页之间必须能建立一一映射：
+4. `prd/00-business-blueprint.md` 是战略级入口，必须能让业务方、CEO / GM、战略 / 投资人在 5 分钟内对齐：业务定位、价值主张、关键业务指标、关键业务环节。
+5. 对研发 / 设计 / 运营看的页面，强调规则、接口、异常、流程、Owner、输入输出物。
+6. 页面需要清楚呈现当前结论、剩余不确定性与后续决策方向，但不要机械套用统一的尾部三段式结构。
+7. 核心章节默认要显式写出上游输入和下游输出，避免章节之间断开。
+8. `05` 到 `18` 每页都应直接呈现产品结论、规则、流程、约束与执行口径，不写“本页交付给谁”“输入来自哪里”这类元叙述。
+9. `07` `08` `10` 三页之间必须能建立一一映射：
    - 功能需求
    - 业务规则 / 验收场景
    - 服务边界 / 接口边界
-9. `12` `15` `16` 三页之间必须能建立一一映射：
-   - 版本切分
-   - 上线门槛 / 灰度策略
-   - 里程碑 / 关键路径
+10. `12` `15` `16` 三页之间必须能建立一一映射：
+    - 版本切分
+    - 上线门槛 / 灰度策略
+    - 里程碑 / 关键路径
 
 视觉质量要求：
 
@@ -379,7 +418,11 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 - 先判断是否值得画图，不要为画图而画图。
 - 值得画时，优先用 mermaid、Markdown 表格、编号结构块、分层清单等飞书可编辑文本格式。
 - mermaid 代码直接写进对应文档，保留文本可编辑性。
-- 不要把 SVG 作为默认交付格式；除非用户明确要求静态图导出，否则不要生成 SVG、PNG、截图式图示来承载 PRD 的核心结构信息。
+- 面向飞书发布时，图表的「源文本」仍以 mermaid / 表格 / 编号结构块存在 PRD 文档里；进入「飞书文档」时，再把这些源文本按下面的画板格式决策路由到合适的载体：
+  1. 思维导图、时序图、类图、饼图、甘特图：mermaid 文本 → 发布时用 `<whiteboard type="mermaid">…</whiteboard>` 内嵌进飞书文档。
+  2. 架构图、组织架构、泳道图、对比图、鱼骨图、柱状图、折线图、树状图、漏斗图、金字塔图、循环 / 飞轮图、里程碑图等复杂图形：在 PRD 中以 mermaid 草稿 + 文字结构化清单共存，发布时由 `lark-whiteboard` 子技能渲染为可编辑画板。
+  3. 仅在用户明确要求静态图导出、且接受不可继续编辑时，才允许把 SVG / PNG / 截图式图示作为最终交付。
+- 本地 PRD 文档中，mermaid 仍是主稿；不要因为发布链路里有画板就放弃 mermaid，否则本地多文档的可读性、可 diff 性和后续维护都会被破坏。
 - 如果交付介质支持，可在标题或信息卡片中使用少量图标 / emoji 增强扫描效率，但不要喧宾夺主。
 
 版式模块建议：
@@ -400,11 +443,14 @@ PRD 不要只写成一篇长文。请拆成多文档，最少包括：
 
 推荐映射：
 
-- 封面型总览图：Mermaid `mindmap`、`flowchart` 或“信息卡片 + 表格”组合
-- 体验旅程图：Mermaid `journey`
-- 产品循环图：Mermaid `flowchart` 或 `stateDiagram-v2`
-- 信息架构图：Mermaid `flowchart` + 分层目录清单
-- 指标漏斗图：Markdown 表格或 Mermaid `xychart-beta` / `flowchart`
+- 封面型总览图：Mermaid `mindmap`、`flowchart` 或“信息卡片 + 表格”组合；面向飞书时以 `<whiteboard type="mermaid">` 内嵌
+- 体验旅程图：Mermaid `journey`；面向飞书时以 `<whiteboard type="mermaid">` 内嵌
+- 产品循环图：Mermaid `flowchart` 或 `stateDiagram-v2`；面向飞书时以 `<whiteboard type="mermaid">` 内嵌
+- 信息架构图：Mermaid `flowchart` + 分层目录清单；面向飞书时以 `<whiteboard type="mermaid">` 内嵌
+- 指标漏斗图：Markdown 表格或 Mermaid `xychart-beta` / `flowchart`；面向飞书时以 `<whiteboard type="mermaid">` 内嵌
+- 技术架构图 / 业务架构图：Mermaid 草稿 + 文字结构化清单；面向飞书时由 `lark-whiteboard` 渲染为可编辑画板
+- 组织架构图 / 角色矩阵：Mermaid `flowchart`；面向飞书时由 `lark-whiteboard` 渲染为可编辑画板
+- 里程碑泳道 / 风险矩阵：Mermaid `gantt` / 表格；面向飞书时由 `lark-whiteboard` 渲染为可编辑画板
 
 ### 第 4 步：询问是否发布到飞书
 
@@ -524,6 +570,28 @@ npx -y @larksuite/cli@latest wiki +node-create --space-id "<space_id>" --parent-
 3. 如果知识库或路径尚未确认，也把候选 `space_id` / `parent_node_token` 记录进去
 4. 明确告诉用户“等待你完成飞书授权并确认发布目标后再继续发布”
 5. 不要假装飞书发布已经完成
+
+### 第 5.5 步：把核心图表发布为飞书画板
+
+在多文档 PRD 已经写到飞书之后，单独把“会高频被打开 / 会反复修改 / 设计感强”的核心图表再以画板形式补一次。这步是“图表美化和继续可编辑”的关键，不是默认每张图都画。
+
+先阅读：
+
+- `references/feishu-whiteboard.md`
+
+1. 选图：从已发布的 PRD 里筛出适合做画板的图。判断标准至少满足一条：
+   - mermaid 表达不清或画风太素（架构图、泳道、漏斗、组织架构、里程碑、鱼骨图、金字塔、对比矩阵等）
+   - 评审会上会被反复打开 / 圈点 / 改版
+   - 用户明确要求“用画板画漂亮点”
+2. 路由：按 `references/feishu-whiteboard.md` 的决策树分流：
+   - mermaid 能撑住且偏好原生嵌入 → 走 `lark-doc` 的 `<whiteboard type="mermaid">…</whiteboard>` 内嵌
+   - mermaid 撑不住的复杂图 → 启动 `lark-whiteboard` 子技能，由它按 Mermaid / SVG / DSL 路由出可编辑画板并写入飞书
+   - 已有画板只是要改字 / 换色 → 走 `lark-whiteboard` 的修改 Workflow（先 `+query --output_as code/raw`，再 `+update`）
+3. 产物：每个图落 `.pd/diagrams/YYYY-MM-DDTHHMMSS/` 目录，按 lark-whiteboard 产物规范保留 `diagram.{mmd,svg,json,png}`，并把 `whiteboard_token` 写回 `feishu/publish-result.md`
+4. 校验：导出画板 PNG 预览，目视确认无文字溢出、节点压字、布局崩溃；如果走 SVG 路径两次改写仍不收敛，按 `lark-whiteboard` 的硬兜底改走 DSL 从零重画
+5. 失败回退：发布失败不要回滚 PRD 文档。把失败命令、缺什么 scope / 登录 / 权限写到 `feishu/publish-plan.md`，并把 whiteboard 产物目录保留在本地，下一次发布继续
+
+画板化不替代 mermaid / 表格 / 编号结构在 PRD 里的主稿地位；它只是飞书侧对“关键图”的美化与继续编辑增强。
 
 ### 第 6 步：产出原型
 
@@ -687,6 +755,8 @@ npx -y @larksuite/cli@latest wiki +node-create --space-id "<space_id>" --parent-
 
 - 文档结构：`references/artifact-structure.md`
 - 飞书发布：`references/feishu-publishing.md`
+- 飞书画板与图表发布：`references/feishu-whiteboard.md`
+- 产品 / 商业思维框架（PM 铁律、机会评估、RICE、TAM/SAM/SOM、Now/Next/Later 等）：`references/product-thinking-frameworks.md`
 - 第三方来源：`references/vendor-sources.md`
 - 初始化脚本：`scripts/init_pm_case.py`
 - 飞书预检查脚本：`scripts/feishu_preflight.py`

@@ -185,6 +185,7 @@ npx -y @larksuite/cli@latest wiki +node-create \
 
 按 `feishu/manifest.json` 的 `documents` 顺序逐篇发布，默认顺序应为：
 
+0. 业务蓝图
 1. 项目背景
 2. 执行摘要
 3. 问题与目标
@@ -228,11 +229,31 @@ npx -y @larksuite/cli@latest wiki +node-create \
 
 默认不要用：
 
-- SVG
+- SVG（仅在用户明确要求静态图导出、且无法用文本表达时例外）
 - PNG / JPG 截图式图示
 - 只能查看、不能在飞书正文内继续编辑的嵌入图
 
 只有在用户明确要求导出静态图，或者某种结构确实无法用文本格式表达时，才允许把静态图作为补充材料，而不是主稿。
+
+## 画板与图表发布策略
+
+mermaid 写在 PRD 本地是主稿，但飞书侧要为「关键图」做一次画板化升级，让它们好看且可继续编辑。详细路由、产物规范、命令模板见：
+
+- `references/feishu-whiteboard.md`
+
+速记版决策树：
+
+- 思维导图 / 时序图 / 类图 / 饼图 / 甘特图 / 状态图 / 简单流程图 → `lark-doc` 的 `<whiteboard type="mermaid">…</whiteboard>` 内嵌
+- 架构图 / 业务架构 / 组织架构 / 泳道 / 漏斗 / 里程碑 / 鱼骨图 / 金字塔 / 柱状图 / 折线图 / 飞轮 / 对比矩阵 → 启动 `lark-whiteboard` 子技能，按 Mermaid / SVG / DSL 路由出可编辑画板并写入飞书
+- 已有画板只改字 / 换色 / 调局部 → 走 `lark-whiteboard` 修改 Workflow（`+query --output_as code/raw` → `+update --overwrite`）
+
+画板化不是默认每张图都做。仅当满足下列任一条件时才升级为画板：
+
+- mermaid 表达不清或画风太素
+- 评审会上会被反复打开 / 圈点 / 改版
+- 用户明确要求“用画板画漂亮点”
+
+产物目录：`.pd/diagrams/YYYY-MM-DDTHHMMSS/`，按 `lark-whiteboard` 产物规范保留源码 / 渲染产物 / 预览图。每次画板发布完成后，把 `whiteboard_token` 与画板 URL 写回 `feishu/publish-result.md`。
 
 ## 发布失败时的处理
 
