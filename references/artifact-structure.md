@@ -5,7 +5,8 @@
 ```text
 .pd/
 ├── brief/
-│   └── 00-request.md
+│   ├── 00-request.md
+│   └── 01-web-research.md
 ├── analysis/
 │   ├── 01-brainstorm.md
 │   └── 02-jobs-product-lens.md
@@ -78,6 +79,7 @@
 
 ## 最低交付要求
 
+- `brief/01-web-research.md`
 - `analysis/01-brainstorm.md`
 - `analysis/02-jobs-product-lens.md`
 - `prd/00-business-blueprint.md`
