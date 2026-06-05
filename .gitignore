@@ -1,9 +1,11 @@
 .DS_Store
 
 .gitnexus/
+.c
 
 # Python 编译缓存
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.playwright-mcp

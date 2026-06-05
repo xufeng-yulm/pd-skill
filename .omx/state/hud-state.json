@@ -1,6 +1,0 @@
-{
-  "last_turn_at": "2026-05-13T07:53:52.969Z",
-  "turn_count": 24,
-  "last_progress_at": "2026-05-13T07:53:52.969Z",
-  "last_agent_output": "已继续处理。\n\n现在 `scripts/init_pm_case.py` 里的 PRD 模板已经做了这几件事：\n\n- 去掉了 `Functional Requirements`、`Product Sp"
-}
