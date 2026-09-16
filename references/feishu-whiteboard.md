@@ -7,6 +7,7 @@
 - PRD 本地多文档中，**mermaid / 表格 / 编号结构块仍是主稿**。它是 PRD 单一事实源，可 diff、可版本化。
 - 进入飞书后，按下面决策树把“关键图”升级为画板。
 - 不要把 SVG / PNG / 截图图作为 PRD 核心结构信息的默认承载。
+- 下列命令为现有集成参考，执行前核对当前 CLI 帮助。`lark-doc` / `lark-whiteboard` 未安装时保留本地源稿并报告具体限制，不声称已生成原生可编辑画板。
 
 ## 与 `lark-doc` / `lark-whiteboard` 的关系
 
@@ -14,7 +15,7 @@
 | --- | --- | --- |
 | `lark-doc` | 飞书云文档创建/读写/插入媒体 | 把 mermaid 图表直接以 `<whiteboard type="mermaid">…</whiteboard>` 插入到已创建的飞书文档中 |
 | `lark-whiteboard` | 飞书画板查询 / 创建 / 编辑 / 复杂图表生成 | 复杂图（架构、泳道、漏斗、里程碑等）走它的 Mermaid / SVG / DSL 路由，由它把画板写到飞书 |
-| 本 skill | 编排 | 在 `第 5 步` 写完多文档 PRD 之后，调度 `lark-doc` / `lark-whiteboard`，把关键图升级为画板 |
+| 本 skill | 编排 | 在已授权的 PRD 发布阶段，按需使用 `lark-doc` / `lark-whiteboard`，把关键图升级为画板 |
 
 ## 图表格式决策树
 
@@ -47,9 +48,9 @@ mindmap
       业务蓝图
       核心链路
     角色
-      任务方
-      学生 / 团队
-      高校
+      使用者
+      业务负责人
+      管理员
       运营
     风险
       合规
